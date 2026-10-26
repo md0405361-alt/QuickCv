@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QuickCV – Free ATS CV Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f5fb;--card:#fff;--tx:#161a23;--mu:#6b7385;--bd:#e1e5f0;--ac:#4f46e5;--ac2:#fff;--g:#10b981;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1118;--card:#171b25;--tx:#eef0f6;--mu:#9aa3b8;--bd:#2a3040;--ac:#818cf8;--ac2:#0e1118}}
+:root[data-theme="dark"]{--bg:#0e1118;--card:#171b25;--tx:#eef0f6;--mu:#9aa3b8;--bd:#2a3040;--ac:#818cf8;--ac2:#0e1118}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px}
+.hero{background:linear-gradient(120deg,#4f46e5,#7c3aed 55%,#db2777);color:#fff;padding:14px 18px 22px}
+.top{display:flex;justify-content:space-between;align-items:center;max-width:1320px;margin:auto}
+.top b{font-size:20px}
+.sw{display:inline-flex;background:rgba(255,255,255,.2);border-radius:99px;padding:3px}
+.sw button{border:0;background:none;color:#fff;padding:5px 14px;border-radius:99px;font:inherit;cursor:pointer}
+.sw button.on{background:#fff;color:#4f46e5;font-weight:700}
+.hero h1{max-width:1320px;margin:14px auto 4px;font-size:clamp(20px,4vw,30px)}
+.hero p{max-width:1320px;margin:0 auto;opacity:.92}
+.badges{max-width:1320px;margin:10px auto 0;display:flex;gap:8px;flex-wrap:wrap}
+.badges span{background:rgba(255,255,255,.18);border-radius:99px;padding:3px 11px;font-size:12px}
+main{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:16px;padding:16px;max-width:1320px;margin:-10px auto 0}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(30,30,80,.05)}
+.card h3{margin:0 0 6px;font-size:15px;display:flex;gap:8px;align-items:center}
+.card h3 i{font-style:normal;background:var(--ac);color:var(--ac2);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px}
+label{display:block;font-size:12.5px;color:var(--mu);margin:10px 0 4px}
+input,select,textarea{width:100%;padding:9px 11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);border-color:transparent}
+textarea{min-height:64px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{border:0;border-radius:10px;padding:9px 16px;background:var(--ac);color:var(--ac2);font:inherit;font-weight:700;cursor:pointer;margin-top:10px}
+.btn.alt{background:none;color:var(--ac);border:1px solid var(--ac);font-weight:600}
+.btn.sm{padding:5px 10px;font-size:13px}
+.exp{border:1px dashed var(--bd);border-radius:12px;padding:10px;margin-top:10px}
+.score{display:flex;gap:14px;align-items:center}
+.ring{--p:0;width:70px;height:70px;border-radius:50%;background:conic-gradient(var(--g) calc(var(--p)*1%),var(--bd) 0);display:grid;place-items:center;flex:none}
+.ring b{width:54px;height:54px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:15px}
+.chk{list-style:none;margin:0;padding:0;font-size:12.5px;display:grid;gap:3px}
+.chk li{color:var(--mu)}.chk li.ok{color:var(--g)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.bar select{width:auto}
+.sat{width:24px;height:24px;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--bd);cursor:pointer;padding:0}
+.sat.on{box-shadow:0 0 0 2px var(--tx)}
+.stick{position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);align-self:start}
+.scroll{overflow-x:auto;border-radius:10px;background:#8b90a0;padding:8px}
+#cv{--cv:#4f46e5;background:#fff;color:#111;width:210mm;min-height:297mm;padding:15mm;font-size:12.5px;line-height:1.5;margin:auto}
+#cv h1{margin:0;font-size:26px;line-height:1.2}
+#cv .tt{font-size:14px;color:#333;margin:2px 0}
+#cv .ct{font-size:11.5px;color:#333}
+#cv h2{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin:14px 0 5px}
+#cv ul{margin:3px 0 6px 18px;padding:0}
+#cv .h{display:flex;justify-content:space-between;gap:8px;font-weight:700}
+#cv .kv{display:grid;grid-template-columns:42mm 1fr}
+#cv .ph{float:right;width:30mm;height:36mm;object-fit:cover;margin-left:10px;border:1px solid #bbb}
+#cv.t-classic .hd{text-align:center}
+#cv.t-classic h2{border-bottom:1.5px solid #111}
+#cv.t-modern h1,#cv.t-modern h2{color:var(--cv)}
+#cv.t-modern h2{border-left:4px solid var(--cv);padding-left:8px;background:color-mix(in srgb,var(--cv) 8%,#fff)}
+#cv.t-modern .hd{border-bottom:3px solid var(--cv);padding-bottom:8px}
+#cv.t-compact{font-size:11.5px;line-height:1.35;padding:12mm}
+#cv.t-compact h2{border-bottom:1px solid #999;margin:9px 0 3px}
+.note{font-size:12px;color:var(--mu);margin-top:8px}
+@media print{.hero,#left,.bar,.note{display:none!important}main{display:block;padding:0;margin:0}.stick{position:static}.scroll{padding:0;background:none;overflow:visible}#cv{zoom:1!important;width:auto;min-height:0;padding:0}@page{size:A4;margin:14mm}}
+</style>
+</head>
+<body>
+<div class="hero">
+ <div class="top"><b>📄 QuickCV</b><div class="sw"><button id="bEN">EN</button><button id="bBN">বাং</button></div></div>
+ <h1 id="h1"></h1><p id="hp"></p><div class="badges" id="bd"></div>
+</div>
+<main>
+ <div id="left"></div>
+ <div class="stick"><div class="card">
+  <div class="bar" id="bar"></div>
+  <div class="scroll" id="sc"><div id="cv"></div></div>
+  <div class="note" id="nt"></div></div></div>
+</main>
+<script>
+var T={en:{
+h1:"A professional CV in 3 minutes — free, ATS-friendly",hp:"One clean layout that recruiters and ATS software read correctly, in every sector.",
+bd:["100% Free","No watermark","ATS-safe","Bangla + English"],
+persona:"Who are you applying as?",p:{corp:"Corporate / Private",govt:"Government (BD style)",intl:"NGO / International / Freelance"},
+s1:"Your details",name:"Full name",title:"Professional title",phone:"Phone",email:"Email",link:"LinkedIn / Portfolio",addr:"City, Country",photo:"Photo (passport size)",
+s2:"Summary",summary:"Professional summary (2–3 lines)",objective:"Career objective",
+s3:"Personal details",father:"Father’s name",mother:"Mother’s name",dob:"Date of birth",marital:"Marital status",religion:"Religion",nation:"Nationality",perm:"Permanent address",pres:"Present address",
+s4:"Experience",company:"Organization",role:"Position",period:"Period (e.g. Jan 2022 – Present)",details:"What did you do? Write in any language",polish:"✨ AI Polish",add:"+ Add experience",rm:"Remove",
+s5:"Education, skills & more",edu:"Education (one per line: degree, institute, year, result)",skills:"Skills (comma separated)",certs:"Certifications / Training (one per line)",projects:"Projects / Achievements (one per line)",langs:"Languages",refs:"References (or ‘Available on request’)",
+dl:"Download PDF",tpl:{classic:"Classic",modern:"Modern",compact:"Compact"},
+sc:"CV strength",ck:["Name, email and phone","Summary / objective written","Experience with bullet points","Numbers & results used","Education added","5+ skills listed","Personal details complete","Profile link added"],
+sh:{sum:"Professional Summary",obj:"Career Objective",per:"Personal Details",exp:"Work Experience",edu:"Education",skill:"Skills",cert:"Certifications & Training",proj:"Projects & Achievements",lang:"Languages",ref:"References"},
+note:"Tip: in the print dialog choose “Save as PDF”. Layout is single-column so ATS can read it."},
+bn:{
+h1:"৩ মিনিটে প্রফেশনাল সিভি — ফ্রি ও ATS-ফ্রেন্ডলি",hp:"একটি পরিচ্ছন্ন লেআউট, যা সব সেক্টরের রিক্রুটার ও ATS সফটওয়্যার সঠিকভাবে পড়তে পারে।",
+bd:["১০০% ফ্রি","ওয়াটারমার্ক নেই","ATS-সেফ","বাংলা + English"],
+persona:"কোন ধরনের চাকরির জন্য?",p:{corp:"কর্পোরেট / প্রাইভেট",govt:"সরকারি (বিডি স্টাইল)",intl:"এনজিও / আন্তর্জাতিক / ফ্রিল্যান্স"},
+s1:"আপনার তথ্য",name:"পূর্ণ নাম",title:"পেশাগত পদবি",phone:"ফোন",email:"ইমেইল",link:"LinkedIn / পোর্টফোলিও",addr:"শহর, দেশ",photo:"ছবি (পাসপোর্ট সাইজ)",
+s2:"সারসংক্ষেপ",summary:"পেশাগত সারসংক্ষেপ (২–৩ লাইন)",objective:"ক্যারিয়ার উদ্দেশ্য",
+s3:"ব্যক্তিগত তথ্য",father:"পিতার নাম",mother:"মাতার নাম",dob:"জন্মতারিখ",marital:"বৈবাহিক অবস্থা",religion:"ধর্ম",nation:"জাতীয়তা",perm:"স্থায়ী ঠিকানা",pres:"বর্তমান ঠিকানা",
+s4:"অভিজ্ঞতা",company:"প্রতিষ্ঠান",role:"পদ",period:"সময়কাল (যেমন জানু ২০২২ – বর্তমান)",details:"কী কাজ করেছেন? যেকোনো ভাষায় লিখুন",polish:"✨ এআই পলিশ",add:"+ অভিজ্ঞতা যোগ করুন",rm:"মুছুন",
+s5:"শিক্ষা, দক্ষতা ও অন্যান্য",edu:"শিক্ষাগত যোগ্যতা (প্রতি লাইনে: ডিগ্রি, প্রতিষ্ঠান, সাল, ফলাফল)",skills:"দক্ষতা (কমা দিয়ে আলাদা করুন)",certs:"সার্টিফিকেট / প্রশিক্ষণ (প্রতি লাইনে একটি)",projects:"প্রজেক্ট / অর্জন (প্রতি লাইনে একটি)",langs:"ভাষা",refs:"রেফারেন্স (অথবা ‘চাহিদা সাপেক্ষে প্রদান করা হবে’)",
+dl:"পিডিএফ ডাউনলোড",tpl:{classic:"ক্লাসিক",modern:"মডার্ন",compact:"কমপ্যাক্ট"},
+sc:"সিভির শক্তি",ck:["নাম, ইমেইল ও ফোন","সারসংক্ষেপ লেখা হয়েছে","বুলেট পয়েন্টসহ অভিজ্ঞতা","সংখ্যা ও ফলাফল ব্যবহার","শিক্ষাগত যোগ্যতা যোগ","৫+ দক্ষতা","ব্যক্তিগত তথ্য সম্পূর্ণ","প্রোফাইল লিংক যোগ"],
+sh:{sum:"পেশাগত সারসংক্ষেপ",obj:"ক্যারিয়ার উদ্দেশ্য",per:"ব্যক্তিগত তথ্য",exp:"কর্ম অভিজ্ঞতা",edu:"শিক্ষাগত যোগ্যতা",skill:"দক্ষতা",cert:"সার্টিফিকেট ও প্রশিক্ষণ",proj:"প্রজেক্ট ও অর্জন",lang:"ভাষা",ref:"রেফারেন্স"},
+note:"টিপ: প্রিন্ট ডায়ালগে “Save as PDF” বেছে নিন। সিঙ্গেল-কলাম লেআউট, তাই ATS সহজে পড়তে পারে।"}};
+var S={lang:"bn",per:"govt",tpl:"classic",col:"#4f46e5",photo:"",d:{},exp:[{}]};
+var COLS=["#4f46e5","#0f766e","#be123c","#1d4ed8","#111827"];
+var GOV=["father","mother","dob","marital","religion","nation","perm","pres"];
+var $=function(i){return document.getElementById(i)};
+function t(){return T[S.lang]}
+function E(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fi(k,l,ty){return '<label>'+l+'</label><input type="'+(ty||"text")+'" data-k="'+k+'" value="'+E(S.d[k])+'">'}
+function ta(k,l){return '<label>'+l+'</label><textarea data-k="'+k+'">'+E(S.d[k])+'</textarea>'}
+function lines(s){return String(s||"").split("\n").map(function(l){return l.replace(/^[•\-*\s]+/,"").trim()}).filter(Boolean)}
+function ul(a){return a.length?'<ul>'+a.map(function(l){return '<li>'+E(l)+'</li>'}).join("")+'</ul>':''}
+function polish(x){return lines(x.replace(/[.।;]+/g,"\n")).map(function(s){
+ if(S.lang==="en"){s=s.charAt(0).toUpperCase()+s.slice(1)+(/[.!?]$/.test(s)?"":".")}else if(!/।$/.test(s))s+="।";return "• "+s}).join("\n")}
+function build(){
+ var x=t(),g=S.per==="govt",h='';
+ $("h1").textContent=x.h1;$("hp").textContent=x.hp;$("nt").textContent=x.note;
+ $("bd").innerHTML=x.bd.map(function(b){return '<span>'+b+'</span>'}).join("");
+ $("bEN").className=S.lang==="en"?"on":"";$("bBN").className=S.lang==="bn"?"on":"";
+ document.documentElement.lang=S.lang;
+ h+='<div class="card"><div class="score"><div class="ring" id="rg"><b id="pc"></b></div><div style="flex:1"><b>'+x.sc+'</b><ul class="chk" id="ck"></ul></div></div></div>';
+ h+='<div class="card"><label style="margin-top:0">'+x.persona+'</label><select id="per">'+["corp","govt","intl"].map(function(k){return '<option value="'+k+'"'+(S.per===k?" selected":"")+'>'+x.p[k]+'</option>'}).join("")+'</select></div>';
+ h+='<div class="card"><h3><i>1</i>'+x.s1+'</h3>'+fi("name",x.name)+'<div class="row"><div>'+fi("title",x.title)+'</div><div>'+fi("phone",x.phone)+'</div><div>'+fi("email",x.email,"email")+'</div><div>'+fi(g?"addr":"link",g?x.pres:x.link)+'</div></div>'+(g?'':fi("addr",x.addr))+(g?'<label>'+x.photo+'</label><input type="file" accept="image/*" id="ph">':'')+'</div>';
+ h+='<div class="card"><h3><i>2</i>'+x.s2+'</h3>'+ta("summary",g?x.objective:x.summary)+'</div>';
+ if(g)h+='<div class="card"><h3><i>3</i>'+x.s3+'</h3><div class="row">'+["father","mother","dob","marital","religion","nation"].map(function(k){return '<div>'+fi(k,x[k],k==="dob"?"date":"")+'</div>'}).join("")+'</div>'+fi("perm",x.perm)+fi("pres",x.pres)+'</div>';
+ h+='<div class="card"><h3><i>4</i>'+x.s4+'</h3>';
+ S.exp.forEach(function(e,i){h+='<div class="exp"><div class="row"><div>'+ef(i,"company",x.company)+'</div><div>'+ef(i,"role",x.role)+'</div></div>'+ef(i,"period",x.period)+'<label>'+x.details+'</label><textarea data-e="'+i+'" data-f="details">'+E(e.details)+'</textarea><button class="btn alt sm" data-pol="'+i+'">'+x.polish+'</button>'+(i?' <button class="btn alt sm" data-rm="'+i+'">'+x.rm+'</button>':'')+'</div>'});
+ h+='<button class="btn alt" id="add">'+x.add+'</button></div>';
+ h+='<div class="card"><h3><i>5</i>'+x.s5+'</h3>'+ta("edu",x.edu)+ta("skills",x.skills)+ta("certs",x.certs)+(g?'':ta("projects",x.projects))+fi("langs",x.langs)+(g?ta("refs",x.refs):'')+'</div>';
+ h+='<button class="btn" id="dl" style="width:100%;font-size:16px">⬇ '+x.dl+'</button>';
+ $("left").innerHTML=h;
+ $("bar").innerHTML='<select id="tp">'+["classic","modern","compact"].map(function(k){return '<option value="'+k+'"'+(S.tpl===k?" selected":"")+'>'+x.tpl[k]+'</option>'}).join("")+'</select>'+COLS.map(function(c){return '<button class="sat'+(S.col===c?" on":"")+'" data-c="'+c+'" style="background:'+c+'"></button>'}).join("");
+ prev();
+}
+function ef(i,f,l){return '<label>'+l+'</label><input data-e="'+i+'" data-f="'+f+'" value="'+E(S.exp[i][f])+'">'}
+function prev(){
+ var x=t(),d=S.d,g=S.per==="govt",sh=x.sh,c=$("cv");
+ c.className="t-"+S.tpl;c.style.setProperty("--cv",S.col);
+ function sec(n,b){return b?'<section><h2>'+n+'</h2>'+b+'</section>':''}
+ var hd='<div class="hd">'+(g&&S.photo?'<img class="ph" src="'+S.photo+'" alt="">':'')+'<h1>'+E(d.name||"—")+'</h1><div class="tt">'+E(d.title)+'</div><div class="ct">'+[d.phone,d.email,d.link,d.addr].filter(Boolean).map(E).join(" · ")+'</div></div>';
+ var ex=S.exp.filter(function(e){return e.company||e.role||e.details}).map(function(e){
+  return '<div class="h"><span>'+E(e.role)+(e.role&&e.company?", ":"")+E(e.company)+'</span><span>'+E(e.period)+'</span></div>'+ul(lines(e.details))}).join("");
+ var per=g?GOV.map(function(k){return d[k]?'<div class="kv"><b>'+x[k]+'</b><span>: '+E(d[k])+'</span></div>':''}).join(""):"";
+ var sk=(d.skills||"").split(",").map(function(s){return s.trim()}).filter(Boolean).map(E).join(" · ");
+ var eb=ul(lines(d.edu)),cb=ul(lines(d.certs)),pb=ul(lines(d.projects)),lb=E(d.langs),rb=E(d.refs);
+ var body=g?
+  sec(sh.obj,E(d.summary))+sec(sh.per,per)+sec(sh.edu,eb)+sec(sh.exp,ex)+sec(sh.cert,cb)+sec(sh.skill,sk)+sec(sh.lang,lb)+sec(sh.ref,rb):
+  sec(sh.sum,E(d.summary))+sec(sh.exp,ex)+sec(sh.skill,sk)+sec(sh.edu,eb)+sec(sh.proj,pb)+sec(sh.cert,cb)+sec(sh.lang,lb);
+ c.innerHTML=hd+body;
+ var w=$("sc").clientWidth-16;c.style.zoom=Math.min(1,w/794);
+ score();
+}
+function score(){
+ var d=S.d,g=S.per==="govt",all=S.exp.map(function(e){return e.details||""}).join("\n");
+ var ok=[d.name&&d.email&&d.phone,(d.summary||"").length>=30,lines(all).length>=2,/\d/.test(all),lines(d.edu).length>0,
+  (d.skills||"").split(",").filter(function(s){return s.trim()}).length>=5,g?GOV.filter(function(k){return d[k]}).length>=7:true,g?true:!!d.link];
+ var n=ok.filter(Boolean).length,p=Math.round(n/8*100);
+ $("rg").style.setProperty("--p",p);$("pc").textContent=p+"%";
+ $("ck").innerHTML=t().ck.map(function(s,i){return '<li class="'+(ok[i]?"ok":"")+'">'+(ok[i]?"✓ ":"○ ")+s+'</li>'}).join("");
+}
+document.addEventListener("input",function(e){var a=e.target;
+ if(a.dataset.k)S.d[a.dataset.k]=a.value;else if(a.dataset.e!==undefined)S.exp[+a.dataset.e][a.dataset.f]=a.value;else return;prev()});
+document.addEventListener("change",function(e){var a=e.target;
+ if(a.id==="per"){S.per=a.value;build()}
+ if(a.id==="tp"){S.tpl=a.value;prev()}
+ if(a.id==="ph"&&a.files[0]){var r=new FileReader();r.onload=function(){S.photo=r.result;prev()};r.readAsDataURL(a.files[0])}});
+document.addEventListener("click",function(e){var a=e.target;
+ if(a.id==="bEN"){S.lang="en";build()}if(a.id==="bBN"){S.lang="bn";build()}
+ if(a.id==="add"){S.exp.push({});build()}
+ if(a.dataset.rm){S.exp.splice(+a.dataset.rm,1);build()}
+ if(a.dataset.pol){a.disabled=true;a.textContent="⏳ …";aiPolish(+a.dataset.pol)}
+ if(a.dataset.c){S.col=a.dataset.c;build()}
+ if(a.id==="dl")window.print()});
+var API=""; // এখানে আপনার Cloudflare Worker URL বসান, যেমন "https://quickcv-ai.yourname.workers.dev"
+async function aiPolish(i){
+ var e=S.exp[i],raw=e.details||"";
+ if(API){try{
+  var r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:raw,lang:S.lang,persona:S.per,role:e.role||"",company:e.company||""})});
+  var j=await r.json();if(j.text){e.details=j.text;build();return}
+ }catch(err){}}
+ e.details=polish(raw);build();
+}
+window.addEventListener("resize",prev);
+build();
+</script>
+</body>
+</html>
