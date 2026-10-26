@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta name="description" content="Create professional, sector-acceptable ATS CVs for free in Bangla and English with QuickCV.">
-<meta name="keywords" content="QuickCV, ATS CV Builder, CV maker Bangladesh, free resume builder, Rakib CV builder">
-<meta name="author" content="Rakib">
- <meta charset="utf-8">
- <meta name="google-site-verification" content="f6sqDezVJwud8aydFfnJXDwlYut5ECmNmSEltckXmdk" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>QuickCV – Free ATS CV Builder</title>
+<title>QuickCV BD – ফ্রি সিভি মেকার | Free ATS CV Builder (বাংলা + English)</title>
+
+<meta name="description" content="QuickCV – বাংলা ও English-এ ফ্রি ATS-ফ্রেন্ডলি সিভি বিল্ডার। সরকারি, প্রাইভেট ও এনজিও চাকরির জন্য ৩ মিনিটে সিভি বানান, ওয়াটারমার্ক ছাড়া PDF ডাউনলোড করুন। Free CV maker for Bangladesh.">
+<meta name="keywords" content="QuickCV, QuickCV BD, ফ্রি সিভি মেকার, বাংলা সিভি, সরকারি চাকরির সিভি, ATS CV builder, free CV maker Bangladesh">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://md0405361-alt.github.io/QuickCv/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QuickCV">
+<meta property="og:title" content="QuickCV – ফ্রি সিভি মেকার | Free ATS CV Builder">
+<meta property="og:description" content="৩ মিনিটে প্রফেশনাল সিভি বানান – বাংলা ও English, কোনো ওয়াটারমার্ক নেই।">
+<meta property="og:url" content="https://md0405361-alt.github.io/QuickCv/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#4f46e5">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"QuickCV","alternateName":["QuickCV BD","Quick CV"],"url":"https://md0405361-alt.github.io/QuickCv/","inLanguage":["bn","en"]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f3f5fb;--card:#fff;--tx:#161a23;--mu:#6b7385;--bd:#e1e5f0;--ac:#4f46e5;--ac2:#fff;--g:#10b981;
@@ -73,6 +83,7 @@ textarea{min-height:64px;resize:vertical}
 </style>
 </head>
 <body>
+<noscript><p style="padding:16px">QuickCV – বাংলা ও English-এ ফ্রি ATS-ফ্রেন্ডলি সিভি বিল্ডার। ব্যবহার করতে JavaScript চালু করুন।</p></noscript>
 <div class="hero">
  <div class="top"><b>📄 QuickCV</b><div class="sw"><button id="bEN">EN</button><button id="bBN">বাং</button></div></div>
  <h1 id="h1"></h1><p id="hp"></p><div class="badges" id="bd"></div>
@@ -182,7 +193,7 @@ document.addEventListener("click",function(e){var a=e.target;
  if(a.dataset.pol){a.disabled=true;a.textContent="⏳ …";aiPolish(+a.dataset.pol)}
  if(a.dataset.c){S.col=a.dataset.c;build()}
  if(a.id==="dl")window.print()});
-var API=""; // এখানে আপনার Cloudflare Worker URL বসান, যেমন "https://quickcv-ai.yourname.workers.dev"
+var API="https://small-feather-f2d7.md0405361.workers.dev";
 async function aiPolish(i){
  var e=S.exp[i],raw=e.details||"";
  if(API){try{
